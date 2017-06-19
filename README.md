@@ -2,11 +2,17 @@
 
 This is an Spring Framework example project using:
  * Spring Boot 1.3.3
- * Spring MVC 4.2.3
+ * Spring MVC 4.3.4
  * Spring Data
  * Gradle
  * Maven
  * MongoDB
+ 
+# Requirements
+
+ * IntelliJ or Eclipse
+ * JDK 1.8 or later
+ * Maven 3.0+ or Gradle 2.3+
 
 # Execution
 
