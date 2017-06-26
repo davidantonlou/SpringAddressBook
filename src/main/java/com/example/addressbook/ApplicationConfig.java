@@ -11,4 +11,18 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebMvc
 @ComponentScan(basePackages = "com.example.addressbook")
 public class ApplicationConfig {
+
+//    @Bean
+//    @Primary
+//    @ConfigurationProperties(prefix="h2")
+//    javax.sql.DataSource h2DataSource(Environment env) {
+//        return DataSourceBuilder.create().build();
+//    }
+//
+//    @Bean
+//    @ConfigurationProperties(prefix="oracle")
+//    javax.sql.DataSource oracleDataSource(Environment env) {
+//        return DataSourceBuilder.create().build();
+//    }
+
 }

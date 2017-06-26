@@ -1,13 +1,14 @@
 package com.example.addressbook.controller;
 
-import com.example.addressbook.dao.PersonDAO;
 import com.example.addressbook.model.Person;
+import com.example.addressbook.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by davidanton on 8/6/17.
@@ -16,18 +17,18 @@ import java.util.List;
 public class AddressBookController {
 
     @Autowired
-    private PersonDAO personDAO;
+    private PersonRepository personRepository;
 
     @GetMapping("/persons")
     public List getPersons() {
-        return personDAO.list();
+        return personRepository.findAll();
     }
 
     @GetMapping("/persons/{id}")
     public ResponseEntity getPerson(@PathVariable("id") Long id) {
 
-        Person person = personDAO.get(id);
-        if (person == null) {
+        Optional<Person> person = personRepository.getById(id);
+        if (!person.isPresent()) {
             return new ResponseEntity("No Person found for ID " + id, HttpStatus.NOT_FOUND);
         }
 
@@ -37,26 +38,24 @@ public class AddressBookController {
     @PostMapping(value = "/persons")
     public ResponseEntity createPerson(@RequestBody Person person) {
 
-        personDAO.create(person);
+        personRepository.save(person);
 
         return new ResponseEntity(person, HttpStatus.OK);
     }
 
-    @DeleteMapping("/persons/{id}")
-    public ResponseEntity deletePerson(@PathVariable Long id) {
+    @DeleteMapping("/persons")
+    public ResponseEntity deletePerson(@RequestBody Person person) {
 
-        if (null == personDAO.delete(id)) {
-            return new ResponseEntity("No Person found for ID " + id, HttpStatus.NOT_FOUND);
-        }
+        personRepository.delete(person);
 
-        return new ResponseEntity(id, HttpStatus.OK);
+        return new ResponseEntity(person, HttpStatus.OK);
 
     }
 
     @PutMapping("/persons/{id}")
     public ResponseEntity updatePerson(@PathVariable Long id, @RequestBody Person person) {
 
-        person = personDAO.update(id, person);
+        person = personRepository.update(person);
 
         if (null == person) {
             return new ResponseEntity("No Person found for ID " + id, HttpStatus.NOT_FOUND);

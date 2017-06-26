@@ -3,10 +3,12 @@
 This is an Spring Framework example project using:
  * Spring Boot 1.3.3
  * Spring MVC 4.3.4
- * Spring Data
+ * Spring Data 1.7.2
+ * Hibernate 4.3.8
+ * H2 DB 1.4.185
+ * MongoDB
  * Gradle
  * Maven
- * MongoDB
  
 # Requirements
 

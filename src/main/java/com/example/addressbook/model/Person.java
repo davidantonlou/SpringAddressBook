@@ -1,9 +1,14 @@
 package com.example.addressbook.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by davidanton on 19/6/17.
  */
+@Entity
 public class Person {
+    @Id
     private Long id;
     private String firstName;
     private String lastName;
