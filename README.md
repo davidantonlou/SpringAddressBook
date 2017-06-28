@@ -23,3 +23,7 @@ This is an Spring Framework example project using:
 
 * Run with Maven: 
     'mvn clean package spring-boot:repackage && java -jar target/springAddressBook-0.1.0.jar'
+    
+* App with h2 profile:
+    * DB config & view: 
+        'localhost:8080/console'
