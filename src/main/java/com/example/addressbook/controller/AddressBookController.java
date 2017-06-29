@@ -2,7 +2,6 @@ package com.example.addressbook.controller;
 
 import com.example.addressbook.model.Person;
 import com.example.addressbook.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,11 @@ import java.util.Optional;
 @RestController
 public class AddressBookController {
 
-    @Autowired
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
+
+    AddressBookController(PersonRepository personRepository){
+        this.personRepository = personRepository;
+    }
 
     @GetMapping("/persons")
     public List getPersons() {
