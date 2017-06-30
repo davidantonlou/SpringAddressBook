@@ -9,5 +9,6 @@ import java.util.Optional;
  * Created by davidanton on 19/6/17.
  */
 public interface JPAPersonRepository extends JpaRepository<Person, Long> {
+    Optional<Person> findById(Long id);
     Optional<Person> findByLastName(String lastName);
 }

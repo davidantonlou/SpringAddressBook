@@ -10,13 +10,13 @@ import java.util.Optional;
 /**
  * Created by davidanton on 19/6/17.
  */
-@Profile("h2")
+@Profile("mongo")
 @Component
-public class H2PersonRepository implements PersonRepository {
+public class MongoPersonRepository implements PersonRepository {
 
     private final JPAPersonRepository jpaPersonRepository;
 
-    H2PersonRepository(JPAPersonRepository jpaPersonRepository){
+    MongoPersonRepository(JPAPersonRepository jpaPersonRepository){
         this.jpaPersonRepository = jpaPersonRepository;
     }
 

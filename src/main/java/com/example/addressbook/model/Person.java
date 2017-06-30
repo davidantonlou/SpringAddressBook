@@ -71,4 +71,10 @@ public class Person {
     public String getCompany() { return company; }
 
     public void setCompany(String company) { this.company = company; }
+
+    @Override
+    public String toString(){
+        return this.getId() + "|" + this.getFirstName() + "|" + this.getLastName() + "|" +
+                this.getCompany() + "|" + this.getEmail() + "|" + this.getMobile();
+    }
 }

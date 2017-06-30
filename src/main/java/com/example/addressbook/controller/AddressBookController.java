@@ -22,7 +22,7 @@ public class AddressBookController {
     }
 
     @GetMapping("/persons")
-    public List getPersons() {
+    public List<Person> getPersons() {
         return personRepository.findAll();
     }
 

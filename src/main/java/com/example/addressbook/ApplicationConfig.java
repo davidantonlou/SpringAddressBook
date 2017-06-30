@@ -6,6 +6,7 @@ import org.springframework.boot.context.embedded.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 /**
@@ -17,24 +18,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackages = "com.example.addressbook")
 public class ApplicationConfig {
 
+    @Profile("h2")
     @Bean
     ServletRegistrationBean h2servletRegistration(){
         ServletRegistrationBean registrationBean = new ServletRegistrationBean( new WebServlet());
         registrationBean.addUrlMappings("/console/*");
         return registrationBean;
     }
-
-//    @Bean
-//    @Primary
-//    @ConfigurationProperties(prefix="h2")
-//    javax.sql.DataSource h2DataSource(Environment env) {
-//        return DataSourceBuilder.create().build();
-//    }
-//
-//    @Bean
-//    @ConfigurationProperties(prefix="oracle")
-//    javax.sql.DataSource oracleDataSource(Environment env) {
-//        return DataSourceBuilder.create().build();
-//    }
-
 }
