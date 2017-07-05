@@ -4,6 +4,7 @@ import com.example.addressbook.model.Person;
 import com.example.addressbook.repository.PersonRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 /**
  * Created by davidanton on 8/6/17.
  */
-@RestController
+@Controller
 public class AddressBookController {
 
     private final PersonRepository personRepository;

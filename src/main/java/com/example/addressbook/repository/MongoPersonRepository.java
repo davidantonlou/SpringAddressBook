@@ -1,47 +1,17 @@
 package com.example.addressbook.repository;
 
 import com.example.addressbook.model.Person;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
  * Created by davidanton on 19/6/17.
  */
-@Profile("mongo")
-@Component
-public class MongoPersonRepository implements PersonRepository {
+public interface MongoPersonRepository extends MongoRepository<Person, Long>, PersonRepository {
 
-    private final JPAPersonRepository jpaPersonRepository;
+    @Query("{id:'?0'}")
+    public Optional<Person> getById(Long id);
 
-    MongoPersonRepository(JPAPersonRepository jpaPersonRepository){
-        this.jpaPersonRepository = jpaPersonRepository;
-    }
-
-    @Override
-    public Person save(Person person) {
-        return jpaPersonRepository.save(person);
-    }
-
-    @Override
-    public Person update(Person person) {
-        return jpaPersonRepository.save(person);
-    }
-
-    @Override
-    public void delete(Person person) {
-        jpaPersonRepository.delete(person);
-    }
-
-    @Override
-    public Optional<Person> getById(Long id) {
-        return jpaPersonRepository.findById(id);
-    }
-
-    @Override
-    public List<Person> findAll() {
-        return jpaPersonRepository.findAll();
-    }
 }

@@ -12,36 +12,36 @@ import java.util.Optional;
  */
 @Profile("h2")
 @Component
-public class H2PersonRepository implements PersonRepository {
+public class H2PersonRepositoryImpl implements PersonRepository {
 
-    private final JPAPersonRepository jpaPersonRepository;
+    private final JPAPersonRepository basePersonRepository;
 
-    H2PersonRepository(JPAPersonRepository jpaPersonRepository){
-        this.jpaPersonRepository = jpaPersonRepository;
+    H2PersonRepositoryImpl(JPAPersonRepository basePersonRepository){
+        this.basePersonRepository = basePersonRepository;
     }
 
     @Override
     public Person save(Person person) {
-        return jpaPersonRepository.save(person);
+        return basePersonRepository.save(person);
     }
 
     @Override
     public Person update(Person person) {
-        return jpaPersonRepository.save(person);
+        return basePersonRepository.save(person);
     }
 
     @Override
     public void delete(Person person) {
-        jpaPersonRepository.delete(person);
+        basePersonRepository.delete(person);
     }
 
     @Override
     public Optional<Person> getById(Long id) {
-        return jpaPersonRepository.findById(id);
+        return basePersonRepository.findById(id);
     }
 
     @Override
     public List<Person> findAll() {
-        return jpaPersonRepository.findAll();
+        return basePersonRepository.findAll();
     }
 }
