@@ -11,6 +11,8 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
+version '1.0-SNAPSHOT'
+
 jar {
     baseName = 'springAddressBook'
     version =  '0.1.0'
